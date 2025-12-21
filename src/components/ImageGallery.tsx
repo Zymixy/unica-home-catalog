@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ImageGalleryProps {
@@ -47,8 +47,8 @@ const ImageGallery = ({ images, title }: ImageGalleryProps) => {
         </Button>
       </div>
 
-      {/* Thumbnails */}
-      <div className="flex gap-2 overflow-x-auto pb-2">
+      {/* Thumbnails with custom scrollbar */}
+      <div className="flex gap-2 overflow-x-auto pb-2 custom-scrollbar">
         {images.map((_, index) => (
           <button
             key={index}
@@ -64,6 +64,12 @@ const ImageGallery = ({ images, title }: ImageGalleryProps) => {
             </div>
           </button>
         ))}
+      </div>
+      
+      {/* Photo Count */}
+      <div className="flex items-center justify-center gap-2 text-muted-foreground">
+        <Camera className="w-4 h-4" />
+        <span className="text-sm">{images.length} fotos</span>
       </div>
     </div>
   );

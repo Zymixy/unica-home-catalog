@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Property } from "@/data/properties";
-import { MapPin } from "lucide-react";
+import { MapPin, Camera } from "lucide-react";
 
 interface PropertyCardProps {
   property: Property;
@@ -8,14 +8,6 @@ interface PropertyCardProps {
 }
 
 const PropertyCard = ({ property, index = 0 }: PropertyCardProps) => {
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("es-ES", {
-      style: "currency",
-      currency: "EUR",
-      maximumFractionDigits: 0,
-    }).format(price);
-  };
-
   return (
     <Link 
       to={`/piso/${property.id}`}
@@ -29,6 +21,12 @@ const PropertyCard = ({ property, index = 0 }: PropertyCardProps) => {
             <span className="text-muted-foreground text-sm tracking-wide">
               Imagen {property.id}
             </span>
+          </div>
+          
+          {/* Photo Count Badge */}
+          <div className="absolute bottom-3 right-3 bg-background/90 backdrop-blur-sm px-3 py-1.5 flex items-center gap-1.5 border border-border">
+            <Camera className="w-4 h-4 text-muted-foreground" />
+            <span className="text-sm text-muted-foreground">{property.images.length}</span>
           </div>
           
           {/* Hover Overlay */}
@@ -50,10 +48,7 @@ const PropertyCard = ({ property, index = 0 }: PropertyCardProps) => {
             {property.title}
           </h3>
           
-          <div className="flex items-center justify-between pt-2">
-            <span className="text-xl font-semibold">
-              {formatPrice(property.price)}
-            </span>
+          <div className="pt-2">
             <span className="text-sm text-muted-foreground">
               {property.size} m²
             </span>
