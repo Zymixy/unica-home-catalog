@@ -4,14 +4,13 @@ import ImageGallery from "@/components/ImageGallery";
 import ContactForm from "@/components/ContactForm";
 import { properties } from "@/data/properties";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, MapPin, Bed, Bath, Maximize } from "lucide-react";
+import { ArrowLeft, MapPin, Bed, Bath, Maximize, Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 
 const PropertyDetail = () => {
   const { id } = useParams();
   const property = properties.find((p) => p.id === id);
-  const [contactType, setContactType] = useState<"info" | "visit">("info");
   const [showForm, setShowForm] = useState(false);
 
   if (!property) {
@@ -116,36 +115,60 @@ const PropertyDetail = () => {
                   </div>
                 </div>
 
-                {/* CTA Buttons */}
-                <div className="flex gap-4 pt-4">
+                {/* CTA Button */}
+                <div className="pt-4">
                   <Button
-                    onClick={() => { setContactType("info"); setShowForm(true); }}
-                    className="flex-1 py-6 text-sm tracking-[0.15em] bg-foreground text-background hover:bg-foreground/90"
+                    onClick={() => setShowForm(true)}
+                    className="w-full py-6 text-sm tracking-[0.15em] bg-foreground text-background hover:bg-foreground/90"
                   >
                     Solicitar información
-                  </Button>
-                  <Button
-                    onClick={() => { setContactType("visit"); setShowForm(true); }}
-                    variant="outline"
-                    className="flex-1 py-6 text-sm tracking-[0.15em] border-foreground hover:bg-foreground hover:text-background"
-                  >
-                    Agendar visita
                   </Button>
                 </div>
               </div>
             </div>
 
-            {/* Contact Form Section */}
+            {/* Contact Popup */}
             {showForm && (
-              <div className="mt-16 max-w-lg mx-auto animate-fade-in-up">
-                <h2 className="text-2xl font-light tracking-wide text-center mb-8">
-                  {contactType === "visit" ? "Agendar visita" : "Solicitar información"}
-                </h2>
-                <ContactForm 
-                  propertyId={property.id} 
-                  propertyTitle={property.title}
-                  type={contactType}
-                />
+              <div className="fixed inset-0 bg-foreground/50 backdrop-blur-sm z-50 flex items-center justify-center p-6" onClick={() => setShowForm(false)}>
+                <div 
+                  className="bg-background border border-border p-8 max-w-md w-full animate-fade-in-up"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <h2 className="text-2xl font-light tracking-wide text-center mb-8">
+                    Solicitar información
+                  </h2>
+                  <div className="space-y-6 text-center">
+                    <p className="text-muted-foreground">
+                      Contacta con nosotros para más información sobre:
+                    </p>
+                    <p className="font-medium">{property.title}</p>
+                    
+                    <div className="space-y-4 pt-4">
+                      <a 
+                        href="mailto:info@unica.com"
+                        className="flex items-center justify-center gap-3 py-4 border border-border hover:bg-secondary transition-colors"
+                      >
+                        <Mail className="w-5 h-5" />
+                        <span className="tracking-wide">info@unica.com</span>
+                      </a>
+                      <a 
+                        href="tel:+34600000000"
+                        className="flex items-center justify-center gap-3 py-4 border border-border hover:bg-secondary transition-colors"
+                      >
+                        <Phone className="w-5 h-5" />
+                        <span className="tracking-wide">+34 600 000 000</span>
+                      </a>
+                    </div>
+                    
+                    <Button
+                      variant="outline"
+                      onClick={() => setShowForm(false)}
+                      className="mt-6 px-8 py-2 text-sm tracking-wide border-foreground hover:bg-foreground hover:text-background"
+                    >
+                      Cerrar
+                    </Button>
+                  </div>
+                </div>
               </div>
             )}
           </div>

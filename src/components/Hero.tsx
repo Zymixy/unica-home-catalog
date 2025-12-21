@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -23,10 +22,6 @@ const Hero = () => {
             </Link>
           </Button>
         </div>
-      </div>
-      
-      <div className="absolute bottom-12 animate-fade-in-delay-3">
-        <ArrowDown className="w-6 h-6 animate-bounce opacity-50" />
       </div>
     </section>
   );
