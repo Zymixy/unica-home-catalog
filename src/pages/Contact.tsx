@@ -1,9 +1,12 @@
 import Header from "@/components/Header";
-import ContactForm from "@/components/ContactForm";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const Contact = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
   return (
     <>
       <Helmet>
@@ -48,7 +51,7 @@ const Contact = () => {
                       <Phone className="w-5 h-5 mt-1 text-muted-foreground" />
                       <div>
                         <p className="font-medium">Teléfono</p>
-                        <p className="text-muted-foreground">+34 91 XXX XX XX</p>
+                        <p className="text-muted-foreground">+34 600 000 000</p>
                       </div>
                     </div>
                     
@@ -56,7 +59,7 @@ const Contact = () => {
                       <Mail className="w-5 h-5 mt-1 text-muted-foreground" />
                       <div>
                         <p className="font-medium">Email</p>
-                        <p className="text-muted-foreground">info@unica.es</p>
+                        <p className="text-muted-foreground">info@unica.com</p>
                       </div>
                     </div>
                   </div>
@@ -72,14 +75,66 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Contact Form */}
-              <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-                <h2 className="text-xl font-light tracking-wide mb-6">Envíanos un mensaje</h2>
-                <ContactForm />
+              {/* CTA */}
+              <div className="animate-fade-in-up flex flex-col justify-center" style={{ animationDelay: "0.2s" }}>
+                <h2 className="text-xl font-light tracking-wide mb-6">¿Tienes alguna pregunta?</h2>
+                <p className="text-muted-foreground mb-8">
+                  Contacta con nosotros para cualquier consulta sobre nuestros pisos únicos.
+                </p>
+                <Button
+                  onClick={() => setShowPopup(true)}
+                  className="w-full py-6 text-sm tracking-[0.15em] bg-foreground text-background hover:bg-foreground/90"
+                >
+                  Solicitar información
+                </Button>
               </div>
             </div>
           </div>
         </main>
+
+        {/* Contact Popup */}
+        {showPopup && (
+          <div className="fixed inset-0 bg-foreground/50 backdrop-blur-sm z-50 flex items-center justify-center p-6" onClick={() => setShowPopup(false)}>
+            <div 
+              className="bg-background border border-border p-8 max-w-md w-full animate-fade-in-up"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h2 className="text-2xl font-light tracking-wide text-center mb-8">
+                Solicitar información
+              </h2>
+              <div className="space-y-6 text-center">
+                <p className="text-muted-foreground">
+                  Contacta con nosotros para más información
+                </p>
+                
+                <div className="space-y-4 pt-4">
+                  <a 
+                    href="mailto:info@unica.com"
+                    className="flex items-center justify-center gap-3 py-4 border border-border hover:bg-secondary transition-colors"
+                  >
+                    <Mail className="w-5 h-5" />
+                    <span className="tracking-wide">info@unica.com</span>
+                  </a>
+                  <a 
+                    href="tel:+34600000000"
+                    className="flex items-center justify-center gap-3 py-4 border border-border hover:bg-secondary transition-colors"
+                  >
+                    <Phone className="w-5 h-5" />
+                    <span className="tracking-wide">+34 600 000 000</span>
+                  </a>
+                </div>
+                
+                <Button
+                  variant="outline"
+                  onClick={() => setShowPopup(false)}
+                  className="mt-6 px-8 py-2 text-sm tracking-wide border-foreground hover:bg-foreground hover:text-background"
+                >
+                  Cerrar
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
