@@ -72,10 +72,9 @@ const PropertyDetail = () => {
                   <span className="text-sm tracking-wide">{property.location}</span>
                 </div>
 
-                {/* Title & Price */}
+                {/* Title */}
                 <div>
-                  <h1 className="text-3xl font-light tracking-wide mb-4">{property.title}</h1>
-                  <p className="text-3xl font-semibold">{formatPrice(property.price)}</p>
+                  <h1 className="text-3xl font-light tracking-wide">{property.title}</h1>
                 </div>
 
                 {/* Quick Stats */}
