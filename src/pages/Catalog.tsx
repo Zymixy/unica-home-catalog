@@ -7,14 +7,12 @@ import { Helmet } from "react-helmet-async";
 
 interface Filters {
   location: string | null;
-  priceRange: { min: number; max: number } | null;
   sizeRange: { min: number; max: number } | null;
 }
 
 const Catalog = () => {
   const [filters, setFilters] = useState<Filters>({
     location: null,
-    priceRange: null,
     sizeRange: null,
   });
 
@@ -23,13 +21,6 @@ const Catalog = () => {
       // Location filter
       if (filters.location && !property.location.includes(filters.location)) {
         return false;
-      }
-
-      // Price filter
-      if (filters.priceRange) {
-        if (property.price < filters.priceRange.min || property.price > filters.priceRange.max) {
-          return false;
-        }
       }
 
       // Size filter

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/lib/supabase";
 
 interface ContactFormProps {
   propertyId?: string;
@@ -15,7 +16,6 @@ const ContactForm = ({ propertyId, propertyTitle, type = "info" }: ContactFormPr
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
     message: type === "visit" 
       ? `Me gustaría agendar una visita para ver "${propertyTitle}".`
@@ -28,27 +28,32 @@ const ContactForm = ({ propertyId, propertyTitle, type = "info" }: ContactFormPr
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate saving to database
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const { error } = await supabase
+        .from('contactos')
+        .insert({
+          nombre: formData.name,
+          telefono: formData.phone,
+          mensaje: formData.message,
+        });
 
-    // For now, save to localStorage as a demo
-    const contacts = JSON.parse(localStorage.getItem("unica_contacts") || "[]");
-    contacts.push({
-      ...formData,
-      propertyId,
-      propertyTitle,
-      type,
-      createdAt: new Date().toISOString(),
-    });
-    localStorage.setItem("unica_contacts", JSON.stringify(contacts));
+      if (error) throw error;
 
-    toast({
-      title: "Mensaje enviado",
-      description: "Nos pondremos en contacto contigo pronto.",
-    });
+      toast({
+        title: "Mensaje enviado",
+        description: "Nos pondremos en contacto contigo pronto.",
+      });
 
-    setFormData({ name: "", email: "", phone: "", message: "" });
-    setIsSubmitting(false);
+      setFormData({ name: "", phone: "", message: "" });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "No se pudo enviar el mensaje. Inténtalo de nuevo.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -59,16 +64,6 @@ const ContactForm = ({ propertyId, propertyTitle, type = "info" }: ContactFormPr
             placeholder="Nombre completo"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            required
-            className="border-border bg-transparent focus:border-foreground transition-colors py-6"
-          />
-        </div>
-        <div>
-          <Input
-            type="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             required
             className="border-border bg-transparent focus:border-foreground transition-colors py-6"
           />
