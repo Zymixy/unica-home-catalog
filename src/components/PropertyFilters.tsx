@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { locations, priceRanges, sizeRanges } from "@/data/properties";
+import { locations, sizeRanges } from "@/data/properties";
 import { X } from "lucide-react";
 
 interface Filters {
   location: string | null;
-  priceRange: { min: number; max: number } | null;
   sizeRange: { min: number; max: number } | null;
 }
 
@@ -17,10 +16,10 @@ interface PropertyFiltersProps {
 const PropertyFilters = ({ filters, onFiltersChange }: PropertyFiltersProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const hasActiveFilters = filters.location || filters.priceRange || filters.sizeRange;
+  const hasActiveFilters = filters.location || filters.sizeRange;
 
   const clearFilters = () => {
-    onFiltersChange({ location: null, priceRange: null, sizeRange: null });
+    onFiltersChange({ location: null, sizeRange: null });
   };
 
   return (
@@ -32,7 +31,7 @@ const PropertyFilters = ({ filters, onFiltersChange }: PropertyFiltersProps) => 
           onClick={() => setIsExpanded(!isExpanded)}
           className="md:hidden border-foreground"
         >
-          Filtros {hasActiveFilters && `(${[filters.location, filters.priceRange, filters.sizeRange].filter(Boolean).length})`}
+          Filtros {hasActiveFilters && `(${[filters.location, filters.sizeRange].filter(Boolean).length})`}
         </Button>
         
         {hasActiveFilters && (
@@ -69,31 +68,6 @@ const PropertyFilters = ({ filters, onFiltersChange }: PropertyFiltersProps) => 
                 }`}
               >
                 {location}
-              </Button>
-            ))}
-          </div>
-        </div>
-
-        {/* Price Filter */}
-        <div className="space-y-3">
-          <h4 className="text-sm font-medium tracking-wide">Precio</h4>
-          <div className="flex flex-wrap gap-2">
-            {priceRanges.map((range) => (
-              <Button
-                key={range.label}
-                variant={filters.priceRange?.min === range.min ? "default" : "outline"}
-                size="sm"
-                onClick={() => onFiltersChange({
-                  ...filters,
-                  priceRange: filters.priceRange?.min === range.min ? null : range,
-                })}
-                className={`text-xs tracking-wide transition-all ${
-                  filters.priceRange?.min === range.min 
-                    ? "bg-foreground text-background" 
-                    : "border-border hover:border-foreground"
-                }`}
-              >
-                {range.label}
               </Button>
             ))}
           </div>
