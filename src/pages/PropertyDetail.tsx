@@ -133,40 +133,23 @@ const PropertyDetail = () => {
                   className="bg-background border border-border p-8 max-w-md w-full animate-fade-in-up"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <h2 className="text-2xl font-light tracking-wide text-center mb-8">
-                    Solicitar información
-                  </h2>
-                  <div className="space-y-6 text-center">
-                    <p className="text-muted-foreground">
-                      Contacta con nosotros para más información sobre:
-                    </p>
-                    <p className="font-medium">{property.title}</p>
-                    
-                    <div className="space-y-4 pt-4">
-                      <a 
-                        href="mailto:info@unica.com"
-                        className="flex items-center justify-center gap-3 py-4 border border-border hover:bg-secondary transition-colors"
-                      >
-                        <Mail className="w-5 h-5" />
-                        <span className="tracking-wide">info@unica.com</span>
-                      </a>
-                      <a 
-                        href="tel:+34600000000"
-                        className="flex items-center justify-center gap-3 py-4 border border-border hover:bg-secondary transition-colors"
-                      >
-                        <Phone className="w-5 h-5" />
-                        <span className="tracking-wide">+34 600 000 000</span>
-                      </a>
-                    </div>
-                    
+                  <div className="flex justify-between items-center mb-6">
+                    <h2 className="text-2xl font-light tracking-wide">
+                      Solicitar información
+                    </h2>
                     <Button
-                      variant="outline"
+                      variant="ghost"
+                      size="sm"
                       onClick={() => setShowForm(false)}
-                      className="mt-6 px-8 py-2 text-sm tracking-wide border-foreground hover:bg-foreground hover:text-background"
+                      className="text-muted-foreground hover:text-foreground"
                     >
-                      Cerrar
+                      ✕
                     </Button>
                   </div>
+                  <p className="text-muted-foreground mb-6">
+                    Interesado en: <span className="font-medium text-foreground">{property.title}</span>
+                  </p>
+                  <ContactForm propertyId={property.id} propertyTitle={property.title} />
                 </div>
               </div>
             )}
