@@ -2,6 +2,8 @@ import { useState, useMemo } from "react";
 import Header from "@/components/Header";
 import PropertyCard from "@/components/PropertyCard";
 import PropertyFilters from "@/components/PropertyFilters";
+import BackToTop from "@/components/BackToTop";
+import ScrollAnimation from "@/components/ScrollAnimation";
 import { properties } from "@/data/properties";
 import { Helmet } from "react-helmet-async";
 
@@ -44,30 +46,32 @@ const Catalog = () => {
       <div className="min-h-screen">
         <Header />
         
-        <main className="pt-24 pb-16 px-6">
+        <main className="pt-24 pb-16 px-4 md:px-6">
           <div className="container mx-auto">
             {/* Title */}
-            <div className="mb-12 animate-fade-in-up">
-              <h1 className="text-4xl md:text-5xl font-light tracking-[0.2em] mb-4">
+            <ScrollAnimation className="mb-8 md:mb-12">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-[0.15em] md:tracking-[0.2em] mb-4">
                 Catálogo
               </h1>
               <p className="text-muted-foreground tracking-wide">
                 {filteredProperties.length} {filteredProperties.length === 1 ? "piso" : "pisos"} disponibles
               </p>
-            </div>
+            </ScrollAnimation>
 
-            <div className="grid lg:grid-cols-4 gap-12">
+            <div className="grid lg:grid-cols-4 gap-6 md:gap-12">
               {/* Filters Sidebar */}
-              <aside className="lg:col-span-1">
+              <ScrollAnimation animation="slide-right" className="lg:col-span-1">
                 <PropertyFilters filters={filters} onFiltersChange={setFilters} />
-              </aside>
+              </ScrollAnimation>
 
               {/* Properties Grid */}
               <div className="lg:col-span-3">
                 {filteredProperties.length > 0 ? (
-                  <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+                  <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8">
                     {filteredProperties.map((property, index) => (
-                      <PropertyCard key={property.id} property={property} index={index} />
+                      <ScrollAnimation key={property.id} delay={index * 100} animation="fade-up">
+                        <PropertyCard property={property} index={index} />
+                      </ScrollAnimation>
                     ))}
                   </div>
                 ) : (
@@ -81,6 +85,8 @@ const Catalog = () => {
             </div>
           </div>
         </main>
+        
+        <BackToTop />
       </div>
     </>
   );
