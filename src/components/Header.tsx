@@ -12,18 +12,18 @@ const Header = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <Link 
             to="/" 
-            className="text-2xl font-semibold tracking-[0.3em] hover:opacity-70 transition-opacity active:scale-95 duration-200"
+            className="text-xl sm:text-2xl font-semibold tracking-[0.2em] sm:tracking-[0.3em] hover:opacity-70 transition-opacity active:scale-95 duration-200"
           >
             UNICA
           </Link>
           
-          <nav className="flex items-center gap-4 md:gap-8">
+          <nav className="flex items-center gap-3 sm:gap-4 md:gap-8">
             <Link 
               to="/catalogo"
-              className={`text-sm tracking-wide transition-all hover:opacity-70 active:scale-95 duration-200 ${
+              className={`text-xs sm:text-sm tracking-wide transition-all hover:opacity-70 active:scale-95 duration-200 ${
                 location.pathname === "/catalogo" ? "font-medium" : ""
               }`}
             >
@@ -31,7 +31,7 @@ const Header = () => {
             </Link>
             <button 
               onClick={() => setShowContact(true)}
-              className="text-sm tracking-wide transition-all hover:opacity-70 active:scale-95 duration-200"
+              className="text-xs sm:text-sm tracking-wide transition-all hover:opacity-70 active:scale-95 duration-200"
             >
               Contacto
             </button>

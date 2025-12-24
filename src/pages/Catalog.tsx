@@ -46,19 +46,19 @@ const Catalog = () => {
       <div className="min-h-screen">
         <Header />
         
-        <main className="pt-24 pb-16 px-4 md:px-6">
+        <main className="pt-20 sm:pt-24 pb-12 sm:pb-16 px-3 sm:px-4 md:px-6">
           <div className="container mx-auto">
             {/* Title */}
-            <ScrollAnimation className="mb-8 md:mb-12">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-[0.15em] md:tracking-[0.2em] mb-4">
+            <ScrollAnimation className="mb-6 sm:mb-8 md:mb-12">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] mb-2 sm:mb-4">
                 Catálogo
               </h1>
-              <p className="text-muted-foreground tracking-wide">
+              <p className="text-sm sm:text-base text-muted-foreground tracking-wide">
                 {filteredProperties.length} {filteredProperties.length === 1 ? "piso" : "pisos"} disponibles
               </p>
             </ScrollAnimation>
 
-            <div className="grid lg:grid-cols-4 gap-6 md:gap-12">
+            <div className="grid lg:grid-cols-4 gap-4 sm:gap-6 md:gap-12">
               {/* Filters Sidebar */}
               <ScrollAnimation animation="slide-right" className="lg:col-span-1">
                 <PropertyFilters filters={filters} onFiltersChange={setFilters} />
@@ -67,7 +67,7 @@ const Catalog = () => {
               {/* Properties Grid */}
               <div className="lg:col-span-3">
                 {filteredProperties.length > 0 ? (
-                  <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                     {filteredProperties.map((property, index) => (
                       <ScrollAnimation key={property.id} delay={index * 100} animation="fade-up">
                         <PropertyCard property={property} index={index} />
@@ -75,8 +75,8 @@ const Catalog = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-16">
-                    <p className="text-muted-foreground tracking-wide">
+                  <div className="text-center py-12 sm:py-16">
+                    <p className="text-sm sm:text-base text-muted-foreground tracking-wide">
                       No se encontraron pisos con los filtros seleccionados.
                     </p>
                   </div>
