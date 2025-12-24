@@ -81,15 +81,15 @@ const ContactForm = ({ propertyId, propertyTitle, type = "info" }: ContactFormPr
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+      <div className="space-y-3 sm:space-y-4">
         <div>
           <Input
             placeholder="Nombre completo"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             required
-            className="border-border bg-transparent focus:border-foreground transition-all duration-200 py-6 focus:scale-[1.01]"
+            className="border-border bg-transparent focus:border-foreground transition-all duration-200 py-5 sm:py-6 text-sm sm:text-base focus:scale-[1.01]"
           />
         </div>
         <div>
@@ -99,12 +99,12 @@ const ContactForm = ({ propertyId, propertyTitle, type = "info" }: ContactFormPr
             value={formData.email}
             onChange={handleEmailChange}
             required
-            className={`border-border bg-transparent focus:border-foreground transition-all duration-200 py-6 focus:scale-[1.01] ${
+            className={`border-border bg-transparent focus:border-foreground transition-all duration-200 py-5 sm:py-6 text-sm sm:text-base focus:scale-[1.01] ${
               emailError ? "border-destructive" : ""
             }`}
           />
           {emailError && (
-            <p className="text-sm text-destructive mt-1">{emailError}</p>
+            <p className="text-xs sm:text-sm text-destructive mt-1">{emailError}</p>
           )}
         </div>
         <div>
@@ -114,7 +114,7 @@ const ContactForm = ({ propertyId, propertyTitle, type = "info" }: ContactFormPr
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             required
-            className="border-border bg-transparent focus:border-foreground transition-all duration-200 py-6 focus:scale-[1.01]"
+            className="border-border bg-transparent focus:border-foreground transition-all duration-200 py-5 sm:py-6 text-sm sm:text-base focus:scale-[1.01]"
           />
         </div>
         <div>
@@ -123,8 +123,8 @@ const ContactForm = ({ propertyId, propertyTitle, type = "info" }: ContactFormPr
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             required
-            rows={5}
-            className="border-border bg-transparent focus:border-foreground transition-all duration-200 resize-none focus:scale-[1.01]"
+            rows={4}
+            className="border-border bg-transparent focus:border-foreground transition-all duration-200 resize-none text-sm sm:text-base focus:scale-[1.01]"
           />
         </div>
       </div>
@@ -132,7 +132,7 @@ const ContactForm = ({ propertyId, propertyTitle, type = "info" }: ContactFormPr
       <Button
         type="submit"
         disabled={isSubmitting || !!emailError}
-        className="w-full py-6 text-sm tracking-[0.2em] bg-foreground text-background hover:bg-foreground/90 transition-all duration-200 active:scale-[0.98]"
+        className="w-full py-5 sm:py-6 text-xs sm:text-sm tracking-[0.15em] sm:tracking-[0.2em] bg-foreground text-background hover:bg-foreground/90 transition-all duration-200 active:scale-[0.98]"
       >
         {isSubmitting ? "Enviando..." : "Enviar mensaje"}
       </Button>
