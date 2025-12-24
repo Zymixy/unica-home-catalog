@@ -21,14 +21,12 @@ const PageLoader = () => {
         isExiting ? "opacity-0" : "opacity-100"
       }`}
     >
-      <div className="text-center">
-        <h1 className="text-4xl md:text-6xl font-light tracking-[0.4em] animate-pulse">
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-4xl md:text-6xl font-light tracking-[0.4em] mb-8">
           UNICA
         </h1>
-        <div className="mt-8 flex justify-center gap-1">
-          <span className="w-2 h-2 bg-foreground rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-          <span className="w-2 h-2 bg-foreground rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-          <span className="w-2 h-2 bg-foreground rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+        <div className="w-48 h-0.5 bg-muted overflow-hidden">
+          <div className="h-full bg-foreground animate-[loading_1.2s_ease-in-out_infinite]" />
         </div>
       </div>
     </div>

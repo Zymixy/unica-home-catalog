@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative px-6">
-      <div className="text-center space-y-8">
+    <section className="min-h-screen flex items-center justify-center relative px-6">
+      <div className="flex flex-col items-center justify-center text-center space-y-8">
         <h1 className="text-7xl md:text-9xl font-light tracking-[0.4em] animate-fade-in-up">
           UNICA
         </h1>
