@@ -13,9 +13,19 @@ const PropertyCard = ({ property, index = 0 }: PropertyCardProps) => {
       to={`/piso/${property.id}`}
       className="group block"
     >
-      <article className="hover-lift p-6 border border-border bg-card">
+      <article className="hover-lift">
+        {/* Image Placeholder - blank */}
+        <div className="aspect-[4/3] bg-secondary border border-border relative overflow-hidden mb-4">
+          {/* Hover Overlay */}
+          <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-300 flex items-center justify-center">
+            <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-100 scale-95 text-sm tracking-[0.2em] bg-background px-6 py-3 border border-border">
+              Ver detalles
+            </span>
+          </div>
+        </div>
+        
         {/* Content */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           <div className="flex items-center gap-2 text-muted-foreground">
             <MapPin className="w-4 h-4" />
             <span className="text-sm tracking-wide">{property.location}</span>
