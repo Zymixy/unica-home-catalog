@@ -10,7 +10,7 @@ const Index = () => {
         <title>Unique Rental Places | Pisos Únicos en Madrid</title>
         <meta name="description" content="Descubre pisos únicos y exclusivos en las mejores zonas de Madrid. Catálogo inmobiliario premium." />
       </Helmet>
-      <div className="min-h-screen">
+      <div className="h-screen overflow-hidden">
         <Header />
         <main>
           <Hero />
