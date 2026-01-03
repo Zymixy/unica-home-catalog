@@ -10,7 +10,7 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contacto | UNICA - Pisos Únicos</title>
+        <title>Contacto | Unique Rental Places</title>
         <meta name="description" content="Ponte en contacto con nosotros. Estamos aquí para ayudarte a encontrar tu piso único." />
       </Helmet>
       
@@ -59,7 +59,7 @@ const Contact = () => {
                       <Mail className="w-5 h-5 mt-1 text-muted-foreground" />
                       <div>
                         <p className="font-medium">Email</p>
-                        <p className="text-muted-foreground">info@unica.com</p>
+                        <p className="text-muted-foreground">info@uniquerentalplaces.com</p>
                       </div>
                     </div>
                   </div>
@@ -109,11 +109,11 @@ const Contact = () => {
                 
                 <div className="space-y-4 pt-4">
                   <a 
-                    href="mailto:info@unica.com"
+                    href="mailto:info@uniquerentalplaces.com"
                     className="flex items-center justify-center gap-3 py-4 border border-border hover:bg-secondary transition-colors"
                   >
                     <Mail className="w-5 h-5" />
-                    <span className="tracking-wide">info@unica.com</span>
+                    <span className="tracking-wide">info@uniquerentalplaces.com</span>
                   </a>
                   <a 
                     href="tel:+34600000000"

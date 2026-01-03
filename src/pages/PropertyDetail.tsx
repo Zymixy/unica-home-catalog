@@ -42,7 +42,7 @@ const PropertyDetail = () => {
   return (
     <>
       <Helmet>
-        <title>{property.title} | UNICA</title>
+        <title>{property.title} | Unique Rental Places</title>
         <meta name="description" content={property.description} />
       </Helmet>
       
