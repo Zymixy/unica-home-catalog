@@ -15,7 +15,7 @@ const Header = () => {
         <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <Link 
             to="/" 
-            className="text-base sm:text-lg md:text-xl font-bold tracking-tight hover:opacity-70 transition-opacity active:scale-95 duration-200"
+            className="font-serif text-lg sm:text-xl md:text-2xl font-bold tracking-tight hover:opacity-70 transition-opacity active:scale-95 duration-200"
           >
             Unique Rental Places
           </Link>
