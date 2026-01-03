@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center relative px-4 sm:px-6">
+    <section className="h-[calc(100vh-80px)] flex items-center justify-center relative px-4 sm:px-6">
       <div className="flex flex-col items-center justify-center text-center max-w-5xl mx-auto">
         {/* Línea decorativa superior */}
         <div className="w-24 sm:w-32 h-px bg-foreground mb-6 sm:mb-8 animate-fade-in" />
