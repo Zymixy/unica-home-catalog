@@ -7,7 +7,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>UNICA | Pisos Únicos en Madrid</title>
+        <title>Unique Rental Places | Pisos Únicos en Madrid</title>
         <meta name="description" content="Descubre pisos únicos y exclusivos en las mejores zonas de Madrid. Catálogo inmobiliario premium." />
       </Helmet>
       <div className="min-h-screen">

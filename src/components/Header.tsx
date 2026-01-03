@@ -15,9 +15,9 @@ const Header = () => {
         <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <Link 
             to="/" 
-            className="text-xl sm:text-2xl font-semibold tracking-[0.2em] sm:tracking-[0.3em] hover:opacity-70 transition-opacity active:scale-95 duration-200"
+            className="text-base sm:text-lg md:text-xl font-bold tracking-tight hover:opacity-70 transition-opacity active:scale-95 duration-200"
           >
-            UNICA
+            Unique Rental Places
           </Link>
           
           <nav className="flex items-center gap-3 sm:gap-4 md:gap-8">
@@ -55,7 +55,7 @@ const Header = () => {
               <CopyableField
                 icon={<Mail className="w-5 h-5" />}
                 label="Email"
-                value="info@unica.com"
+                value="info@uniquerentalplaces.com"
               />
               <CopyableField
                 icon={<Phone className="w-5 h-5" />}

@@ -39,7 +39,7 @@ const Catalog = () => {
   return (
     <>
       <Helmet>
-        <title>Catálogo | UNICA - Pisos Únicos</title>
+        <title>Catálogo | Unique Rental Places</title>
         <meta name="description" content="Explora nuestro catálogo de pisos exclusivos en Madrid. Filtra por ubicación, precio y tamaño." />
       </Helmet>
       

@@ -22,8 +22,8 @@ const PageLoader = () => {
       }`}
     >
       <div className="flex flex-col items-center justify-center">
-        <h1 className="text-4xl md:text-6xl font-light tracking-[0.4em] mb-8">
-          UNICA
+        <h1 className="text-2xl md:text-4xl font-bold tracking-tight mb-8">
+          Unique Rental Places
         </h1>
         <div className="w-48 h-0.5 bg-muted overflow-hidden">
           <div className="h-full bg-foreground animate-[loading_1.2s_ease-in-out_infinite]" />
